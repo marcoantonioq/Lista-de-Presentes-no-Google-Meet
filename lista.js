@@ -4,11 +4,13 @@ var date = new Intl.DateTimeFormat('pt-BR', { day: '2-digit', month: '2-digit', 
 // Abre a lista de usuários meet / Click
 document.querySelector("span[jscontroller='FTBAv']").click()
 
+// Scroll de usuários
 var htmlElementListUsuarios = document.querySelector("div[jsname='KYYiw']").querySelector("span")
 
 var scrollHeight = htmlElementListUsuarios.scrollHeight
 var scrollOffSetHeight = htmlElementListUsuarios.offsetHeight
 
+// Inicio da pagina de usuários
 htmlElementListUsuarios.scrollTop = 0
 
 for (let height = 0; height <= scrollHeight; height += scrollOffSetHeight) {
@@ -19,7 +21,6 @@ for (let height = 0; height <= scrollHeight; height += scrollOffSetHeight) {
     })
     htmlElementListUsuarios.scrollTop = height
 }
-
 
 // String de usuários
 var list_presente = ""
