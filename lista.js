@@ -28,8 +28,9 @@ setTimeout(function() {
     }
 
     // Mostra a lista
-    console.log("Lista de presentes: ")
+    console.log("Presentes: ")
     console.table(users)
+    console.log(Object.keys(users).toString().split(",").join("\n"))
     console.log("Total de presentes: ", Object.keys(users).length)
 
 }, 3000);
