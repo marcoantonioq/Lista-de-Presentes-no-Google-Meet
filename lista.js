@@ -1,33 +1,35 @@
+// Usuários
 var users = {}
-var date = new Intl.DateTimeFormat('pt-BR', { day: '2-digit', month: '2-digit', hour: '2-digit', minute: '2-digit' }).format(new Date)
 
-// Abre a lista de usuários meet / Click
+// Data atual
+var dt = new Date()
+var date = `${dt.toLocaleDateString()} ${dt.toLocaleTimeString()}`
+
+
+// Abre lista de usuários
 document.querySelector("span[jscontroller='FTBAv']").click()
 
-// Scroll de usuários
-var htmlElementListUsuarios = document.querySelector("div[jsname='KYYiw']").querySelector("span")
+setTimeout(function() {
+    // Scroll de usuários
+    var htmlElementListUsuarios = document.querySelector("div[jsname='KYYiw']").querySelector("span")
 
-var scrollHeight = htmlElementListUsuarios.scrollHeight
-var scrollOffSetHeight = htmlElementListUsuarios.offsetHeight
+    var scrollHeight = htmlElementListUsuarios.scrollHeight
+    var scrollOffSetHeight = htmlElementListUsuarios.offsetHeight
 
-// Inicio da pagina de usuários
-htmlElementListUsuarios.scrollTop = 0
+    // Inicio da pagina de usuários
+    htmlElementListUsuarios.scrollTop = 0
 
-for (let height = 0; height <= scrollHeight; height += scrollOffSetHeight) {
+    for (let height = 0; height <= scrollHeight; height += scrollOffSetHeight) {
+        // Percorre a lista de usuários atual
+        document.querySelectorAll(".NkoVdd").forEach((elUser) => {
+            users[elUser.innerHTML] = date;
+        })
+        htmlElementListUsuarios.scrollTop = height
+    }
 
-    // Percorre a lista de usuários atual
-    document.querySelectorAll(".NkoVdd").forEach((e) => {
-        users[e.innerHTML] = date;
-    })
-    htmlElementListUsuarios.scrollTop = height
-}
+    // Mostra a lista
+    console.log("Lista de presentes: ")
+    console.table(users)
+    console.log("Total de presentes: ", Object.keys(users).length)
 
-// String de usuários
-var list_presente = ""
-for (const user in users) {
-    list_presente += `\n${user} \t${users[user]}`
-}
-
-// Mostra a lista
-console.log(list_presente)
-console.log(Object.keys(users).length)
+}, 3000);
