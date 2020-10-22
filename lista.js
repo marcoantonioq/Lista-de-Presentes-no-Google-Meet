@@ -46,7 +46,6 @@ setTimeout(function() {
         
         var fimChamada = setInterval(()=> {
             if(timeouts.length = resolvidos){
-                console.log("Fim da chamada!!!")
                 console.log("Presentes: ")
                 console.table(users)
                 console.log(Object.keys(users).toString().split(",").join("\n"))
