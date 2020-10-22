@@ -26,17 +26,22 @@ setTimeout(function() {
         var timeouts = [];
         var resolvidos = 0;
         
-        for (let height = 0; height <= scrollHeight+1200; height += 112) {
+        for (let height = 0; height <= (scrollHeight); height += 112) {
             timeouts.push( setTimeout( ()=>{ 
                 try{
                     // Percorre a lista de usuários atual
                     document.querySelectorAll(".NkoVdd").forEach((elUser) => {
-                        users[elUser.innerHTML] = date;
+                        let user = elUser.innerHTML;
+                        // Ignorados
+                        let ignore = ['(apresentação)'].every((el)=> user.includes(el))
+                        if(!ignore){
+                            users[user] = date;
+                        }
                     })
                     resolvidos++
                     htmlElementListUsuarios.scrollTop = height
                 }catch(e){console.log(e)}	
-            }, height + 800) );
+            }, height + 200) );
         }
         
         var fimChamada = setInterval(()=> {
@@ -49,7 +54,7 @@ setTimeout(function() {
                 htmlElementListUsuarios.scrollTop = 0
                 clearInterval(fimChamada);
             }
-        }, 3000);
+        }, 9000);
         
         
     }, 3000);
