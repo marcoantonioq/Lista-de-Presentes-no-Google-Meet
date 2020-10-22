@@ -26,7 +26,7 @@ setTimeout(function() {
         var timeouts = [];
         var resolvidos = 0;
         
-        for (let height = 0; height <= scrollHeight; height += 100) {
+        for (let height = 0; height <= scrollHeight+1200; height += 112) {
             timeouts.push( setTimeout( ()=>{ 
                 try{
                     // Percorre a lista de usuários atual
@@ -49,9 +49,9 @@ setTimeout(function() {
                 htmlElementListUsuarios.scrollTop = 0
                 clearInterval(fimChamada);
             }
-        }, 4000);
+        }, 3000);
         
         
-    }, 8000);
+    }, 3000);
     
-}, 4000);
+},6000);
