@@ -1,5 +1,9 @@
 // Usuários
-var users = {}
+if(typeof user === 'undefined'){
+ var users = {}
+ var counter=0
+}
+counter++
 
 // Data atual
 var dt = new Date()
@@ -21,20 +25,24 @@ setTimeout(function() {
         // Percorre a lista de usuários atual
         var saltos = 0
         var percorreChamada = setInterval(()=> {
-            document.querySelectorAll(".NkoVdd").forEach((elUser) => {
+            document.querySelectorAll(".ZjFb7c").forEach((elUser) => {
                 let user = elUser.innerHTML;
                 // Ignorados
                 let ignore = ['(apresentação)'].every((el)=> user.includes(el))
                 if(!ignore){
-                    users[user] = date;
+                    if(typeof users[user] === 'undefined'){
+                        users[user] = []
+                    }
+                    users[user].push(date)
                 }
             })
             if(saltos > htmlElementListUsuarios.scrollHeight){
                 console.log("Fim da chamada!")
                 
                 console.log("Presentes: ")
-                console.table(users)
-                console.log(Object.keys(users).toString().split(",").join("\n"))
+                Object.entries(users).map((user)=>{
+                    console.log(user[0], `%${counter/(user[1].length)}`)
+                })
                 console.log("Total de presentes: ", Object.keys(users).length)
                 htmlElementListUsuarios.scrollTop = 0
                 clearInterval(percorreChamada);
